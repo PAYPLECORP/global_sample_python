@@ -17,10 +17,6 @@ def order(request):
         'totalAmount': '1.00',
         'firstName': 'Payple',
         'lastName': 'Inc',
-        'country': 'KR',
-        'address1': '14, Teheran-ro 34-gil, Gangnam-gu',
-        'locality': 'Seoul',
-        'postalCode': '06220',
         'currency': 'USD',
         'email': 'test@payple.kr',
         'phoneNumber': '01012345678',
@@ -64,11 +60,6 @@ def order_result(request):
             'currency': request.POST.get('currency'),  # 통화
             'firstName': request.POST.get('firstName'),  # 카드소유주 이름
             'lastName': request.POST.get('lastName'),  # 카드소유주 성
-            'address1': request.POST.get('address1'),  # 도로명
-            'locality': request.POST.get('locality'),  # 시/구/군
-            'administrativeArea': request.POST.get('administrativeArea'),  # 국가
-            'postalCode': request.POST.get('postalCode'),  # 도/시 (국가가 미국(US), 혹은 캐나다(CA)인 경우에는 선택한 도/시 코드가 반환됩니다.)
-            'country': request.POST.get('country'),  # 우편번호
             'email': request.POST.get('email'),  # 이메일 주소
             'phoneNumber': request.POST.get('phoneNumber'),  # 휴대전화 번호
             'billing_key': request.POST.get('billing_key'),  # 빌링키 (카드정보를 암호화 한 키 값)
@@ -113,11 +104,6 @@ def payBillkey(request):
             'currency': pay_req_data.get('currency'),  # [필수] 통화
             'firstName': pay_req_data.get('firstName'),  # [선택] 카드소유주 이름 (보내지 않을 경우, 최초 결제시 입력한 카드소유주 이름으로 결제요청이 됩니다.)
             'lastName': pay_req_data.get('lastName'),  # [선택] 카드소유주 성 (보내지 않을 경우, 최초 결제시 입력한 카드소유주 성으로 결제요청이 됩니다.)
-            'country': pay_req_data.get('country'),  # [선택] 국가 (보내지 않을 경우, 최초 결제시 입력한 국가로 결제요청이 됩니다.)
-            'administrativeArea': pay_req_data.get('administrativeArea'),   # [선택] 도/시 (보내지 않을 경우, 최초 결제시 입력한 도/시로 결제요청이 됩니다.)
-            'locality': pay_req_data.get('locality'),  # [선택] 시/구/군 (보내지 않을 경우, 최초 결제시 입력한 시/구/군으로 결제요청이 됩니다.)
-            'address1': pay_req_data.get('address1'),  # [선택] 도로명  (보내지 않을 경우, 최초 결제시 입력한 도로명으로 결제요청이 됩니다.)
-            'postalCode': pay_req_data.get('postalCode'),  # [선택] 우편번호  (보내지 않을 경우, 최초 결제시 입력한 우편번호로 결제요청이 됩니다.)
             'email': pay_req_data.get('email'),  # [선택] 이메일 주소  (보내지 않을 경우, 최초 결제시 입력한 이메일 주소로 결제요청이 됩니다.)
             'phoneNumber': pay_req_data.get('phoneNumber'),  # [선택] 휴대전화 번호  (보내지 않을 경우, 최초 결제시 입력한 휴대전화 번호로 결제요청이 됩니다.)
             'resultUrl': pay_req_data.get('resultUrl')  # [선택] 해당 파라미터(resultUrl)는 별도의 기능은 하지 않으나, 파트너사에서 빌링키 결제 성공시 리다이렉트 하는 등 활용할 수 있는 파라미터입니다.
