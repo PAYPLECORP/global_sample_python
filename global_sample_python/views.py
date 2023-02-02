@@ -19,7 +19,6 @@ def order(request):
         'lastName': 'Inc',
         'currency': 'USD',
         'email': 'test@payple.kr',
-        'phoneNumber': '01012345678',
         'resultUrl': 'http://127.0.0.1:8000/result'
     }
     return render(request, 'order.html', default_data)
@@ -61,7 +60,6 @@ def order_result(request):
             'firstName': request.POST.get('firstName'),  # 카드소유주 이름
             'lastName': request.POST.get('lastName'),  # 카드소유주 성
             'email': request.POST.get('email'),  # 이메일 주소
-            'phoneNumber': request.POST.get('phoneNumber'),  # 휴대전화 번호
             'billing_key': request.POST.get('billing_key'),  # 빌링키 (카드정보를 암호화 한 키 값)
             'submitTimeUtc': request.POST.get('submitTimeUtc')  # 결제 시간
         }
@@ -105,7 +103,6 @@ def payBillkey(request):
             'firstName': pay_req_data.get('firstName'),  # [선택] 카드소유주 이름 (보내지 않을 경우, 최초 결제시 입력한 카드소유주 이름으로 결제요청이 됩니다.)
             'lastName': pay_req_data.get('lastName'),  # [선택] 카드소유주 성 (보내지 않을 경우, 최초 결제시 입력한 카드소유주 성으로 결제요청이 됩니다.)
             'email': pay_req_data.get('email'),  # [선택] 이메일 주소  (보내지 않을 경우, 최초 결제시 입력한 이메일 주소로 결제요청이 됩니다.)
-            'phoneNumber': pay_req_data.get('phoneNumber'),  # [선택] 휴대전화 번호  (보내지 않을 경우, 최초 결제시 입력한 휴대전화 번호로 결제요청이 됩니다.)
             'resultUrl': pay_req_data.get('resultUrl')  # [선택] 해당 파라미터(resultUrl)는 별도의 기능은 하지 않으나, 파트너사에서 빌링키 결제 성공시 리다이렉트 하는 등 활용할 수 있는 파라미터입니다.
         }
 
